@@ -1,0 +1,34 @@
+﻿@model Facturador.Models.Clientes
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Clientes</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RFC)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RFC)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UsoCFDI)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UsoCFDI)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>
