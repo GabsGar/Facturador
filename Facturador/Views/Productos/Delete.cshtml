@@ -8,45 +8,62 @@
 <h2 class="text-dark">Borrar Producto</h2>
 <br />
 
-<div>
-    <h4>Productos</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ValorUnitario)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ValorUnitario)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.CantidadStock)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.CantidadStock)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Descripcion)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ClaveProdServ)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ClaveProdServ.Descripcion)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ClaveUnidad)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ClaveUnidad.Descripcion)
-        </dd>
-    </dl>
-
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" class="btn btn-default" /> |
-        <a asp-action="Index">Back to List</a>
-    </form>
-</div>
+<form method="post" asp-action="Delete">
+    <div class="p-4 border border-dark rounded">
+        <div class="form-group">
+            <div class="col-12">
+                <strong>
+                    <label asp-for="Descripcion"></label>
+                </strong>
+            </div>
+            <div class="col-12">
+                <input disabled asp-for="Descripcion" class="form-control border border-dark" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-12">
+                <strong>
+                    <label asp-for="ValorUnitario"></label>
+                </strong>
+            </div>
+            <div class="col-12">
+                <input disabled asp-for="ValorUnitario" class="form-control border border-dark" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-12">
+                <strong>
+                    <label asp-for="CantidadStock"></label>
+                </strong>
+            </div>
+            <div class="col-12">
+                <input disabled asp-for="CantidadStock" class="form-control border border-dark" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-12">
+                <strong>
+                    <label asp-for="ClaveProdServ"></label>
+                </strong>
+            </div>
+            <div class="col-12">
+                <input disabled asp-for="ClaveProdServ" class="form-control border border-dark" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-12">
+                <strong>
+                    <label asp-for="ClaveUnidad"></label>
+                </strong>
+            </div>
+            <div class="col-12">
+                <input disabled asp-for="ClaveUnidad" class="form-control border border-dark" />
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <input type="submit" class="btn btn-danger" asp-route-id="@Model.Id" value="Borrar Producto" />
+            <a asp-action="Index" class="btn btn-success">Regreso a Lista de Productos</a>
+        </div>
+    </div>
+</form>
