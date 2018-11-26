@@ -5,38 +5,80 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<div class="row">
+    <div class="col-6">
+        <h2 class="text-dark">Lista de Clientes</h2>
+    </div>
+    <div class="col-6 text-right">
+        <a asp-action="Create" class="btn btn-primary"><i class="fas fa-plus"></i>&nbsp; Nuevo Cliente</a>
+    </div>
+</div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.RFC)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UsoCFDI)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.RFC)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UsoCFDI)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
+<br />
+<input type="text" class="form-control border border-dark" id="Busqueda" onkeyup="myFunction()" placeholder="&#xf002; &nbsp; Busqueda por número, Nombre, RFC o UsoCFDI de Cliente...">
+<br />
+<div class="table-responsive">
+    <table class="table table-light table-striped table-hover border border-dark" id="TablaClientes">
+        <thead class="thead-dark">
+            <tr>
+                <th style="width:10%;">
+                    No.
+                </th>
+                <th style="width:30%;">
+                    @Html.DisplayNameFor(model => model.Nombre)
+                </th>
+                <th style="width:30%;">
+                    @Html.DisplayNameFor(model => model.RFC)
+                </th>
+                <th style="width:30%;">
+                    @Html.DisplayNameFor(model => model.UsoCFDI)
+                </th>
+                <th></th>
+                <th style="width:30%;"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                int contador = 1;
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@contador</td>
+                        <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
+                        <td>@Html.DisplayFor(modelItem => item.RFC)</td>
+                        <td>@Html.DisplayFor(modelItem => item.UsoCFDI)</td>
+                        <td>
+                            <partial name="_TableButtonPartial" model="item.Id" />
+                        </td>
+                    </tr>
+                    contador++;
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+<br />
+<a asp-controller="PuntoDeVenta" asp-action="Index" class="btn btn-success">Regreso a Punto de Venta</a>
+
+@section scripts{
+    <script type="text/javascript">
+        function filterTable(event) {
+            var filter = event.target.value.toUpperCase();
+            var rows = document.querySelector("#TablaProductos tbody").rows;
+
+            for (var i = 0; i < rows.length; i++) {
+                var firstCol = rows[i].cells[0].textContent.toUpperCase();
+                var secondCol = rows[i].cells[1].textContent.toUpperCase();
+                var thirdCol = rows[i].cells[2].textContent.toUpperCase();
+                if (firstCol.indexOf(filter) > -1 || secondCol.indexOf(filter) > -1 || thirdCol.indexOf(filter) > -1) {
+                    rows[i].style.display = "";
+                } else {
+                    rows[i].style.display = "none";
+                }
+            }
+        }
+
+        document.querySelector('#Busqueda').addEventListener('keyup', filterTable, false);
+    </script>
 }
-    </tbody>
-</table>

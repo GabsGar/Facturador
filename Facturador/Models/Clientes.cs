@@ -14,6 +14,9 @@ namespace Facturador.Models
         public string RFC { get; set; }
 
         [Required]
+        public string Nombre { get; set; }
+
+        [Required]
         public string UsoCFDI { get; set; }
     }
 }

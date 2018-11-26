@@ -1,0 +1,11 @@
+﻿@model int
+<td style="width:150px; white-space:normal;">
+    <div class="btn-group" role="group">
+        <a asp-action="Edit" asp-route-id="@Model" class="btn btn-primary">
+            <i class="fas fa-edit"></i> Editar
+        </a>
+        <a asp-action="Delete" asp-route-id="@Model" class="btn btn-danger">
+            <i class="fas fa-trash-alt"></i> Borrar
+        </a>
+    </div>
+</td>

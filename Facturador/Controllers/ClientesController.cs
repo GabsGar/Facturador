@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Facturador.Data;
 using Facturador.Models;
+using Facturador.Utility;
 
 namespace Facturador.Controllers
 {
@@ -25,36 +26,18 @@ namespace Facturador.Controllers
             return View(await _context.Clientes.ToListAsync());
         }
 
-        // GET: Clientes/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var clientes = await _context.Clientes
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (clientes == null)
-            {
-                return NotFound();
-            }
-
-            return View(clientes);
-        }
-
         // GET: Clientes/Create
         public IActionResult Create()
         {
-            return View();
+            Clientes clientes = new Clientes();
+            clientes.UsoCFDI = SD.UsoCFDI;
+            return View(clientes);
         }
 
         // POST: Clientes/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,RFC,UsoCFDI")] Clientes clientes)
+        public async Task<IActionResult> Create([Bind("Id,Nombre,RFC,UsoCFDI")] Clientes clientes)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +69,7 @@ namespace Facturador.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,RFC,UsoCFDI")] Clientes clientes)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,RFC,UsoCFDI")] Clientes clientes)
         {
             if (id != clientes.Id)
             {

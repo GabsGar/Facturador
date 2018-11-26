@@ -11,7 +11,7 @@ namespace Facturador.Models
         public int Id { get; set; }
 
         [Required]
-        public int Clave { get; set; }
+        public string Clave { get; set; }
 
         [Required]
         public string Descripcion { get; set; }
