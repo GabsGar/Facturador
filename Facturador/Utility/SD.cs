@@ -7,19 +7,19 @@ namespace Facturador.Utility
 {
     public class SD
     {
-        public const string User = "User";
-
-        public const string AdminUser = "Admin";
-
         public const string RFCEmisor = "HACH9304232YA";
 
-        public const string LugarExpedicion = "3.3";
+        public const string LugarExpedicion = "04410";
+
+        public const string DireccionEmisor = "Petróleos Mexicanos, Petrolera Taxqueña, Ciudad de México";
+
+        public const string TelefononEmisor = "5531292004";
+
+        public const string CorreoEmisor = "hajjhector@gmail.com";
 
         public const string RegimenFiscalEmisor = "605";
 
         public const string Version = "3.3";
-
-        public const string Sello = "3.3";
 
         public const string UsoCFDI = "G01";
 

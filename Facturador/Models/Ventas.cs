@@ -31,6 +31,8 @@ namespace Facturador.Models
         
         public double TipoCambio { get; set; }
 
+        public string CondicionesDePago { get; set; }
+
         [Required]
         public int MonedaId { get; set; }
 

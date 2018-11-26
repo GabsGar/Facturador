@@ -1,0 +1,18 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace Facturador.Models.ViewModels
+{
+    public class FacturaViewModel
+    {
+        public Facturas Factura{ get; set; }
+
+        public Ventas Venta { get; set; }
+
+        public IEnumerable<Transacciones> Transacciones { get; set; }
+
+        public IEnumerable<Productos> Productos { get; set; }
+    }
+}

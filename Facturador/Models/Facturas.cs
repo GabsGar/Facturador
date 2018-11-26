@@ -20,8 +20,6 @@ namespace Facturador.Models
         [Required]
         public string Certificado { get; set; }
 
-        public string CondicionesDePago { get; set; }
-
         [Required]
         public DateTime FechaExpedicion { get; set; }
 
