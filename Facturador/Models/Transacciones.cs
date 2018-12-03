@@ -34,5 +34,11 @@ namespace Facturador.Models
 
         [Required]
         public double ImpuestosTrasladados { get; set; }
+
+        [Required]
+        public int VentaId { get; set; }
+
+        [ForeignKey("VentaId")]
+        public virtual Ventas Ventas { get; set; }
     }
 }

@@ -31,5 +31,11 @@ namespace Facturador.Models
 
         [ForeignKey("VentaId")]
         public virtual Ventas Ventas { get; set; }
+
+        [Required]
+        public int ClienteID { get; set; }
+
+        [ForeignKey("ClienteID")]
+        public virtual Clientes Clientes { get; set; }
     }
 }

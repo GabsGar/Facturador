@@ -9,6 +9,8 @@ namespace Facturador.Models.ViewModels
     {
         public Ventas Venta { get; set; }
 
+        public Clientes Clientes { get; set; }
+
         public IEnumerable<Transacciones> Transacciones { get; set; }
 
         public IEnumerable<Productos> Productos { get; set; }

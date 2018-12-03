@@ -9,9 +9,21 @@ namespace Facturador.Utility
     {
         public const string RFCEmisor = "HACH9304232YA";
 
+        public const string NombreEmisor = "Hajj Contreras Hector Omar";
+
         public const string LugarExpedicion = "04410";
 
-        public const string DireccionEmisor = "Petróleos Mexicanos, Petrolera Taxqueña, Ciudad de México";
+        public const string DomicilioFiscalCalle = "Petróleos Mexicanos";
+
+        public const string DomicilioFiscalNoExterior = "21";
+
+        public const string DomicilioFiscalColonia = "Petrolera Taxqueña";
+
+        public const string DomicilioFiscalMunicipio = "Coyoacan";
+
+        public const string DomicilioFiscalEstado = "Ciudad de México";
+        
+        public const string DomicilioFiscalCodigoPostal = "04410";
 
         public const string TelefononEmisor = "5531292004";
 

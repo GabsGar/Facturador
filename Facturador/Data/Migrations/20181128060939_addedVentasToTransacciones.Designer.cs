@@ -4,14 +4,16 @@ using Facturador.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Facturador.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181128060939_addedVentasToTransacciones")]
+    partial class addedVentasToTransacciones
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -81,8 +83,6 @@ namespace Facturador.Data.Migrations
                     b.Property<string>("Certificado")
                         .IsRequired();
 
-                    b.Property<int>("ClienteID");
-
                     b.Property<DateTime>("FechaExpedicion");
 
                     b.Property<string>("NoCertificado")
@@ -97,8 +97,6 @@ namespace Facturador.Data.Migrations
                     b.Property<int>("VentaId");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ClienteID");
 
                     b.HasIndex("VentaId");
 
@@ -418,11 +416,6 @@ namespace Facturador.Data.Migrations
 
             modelBuilder.Entity("Facturador.Models.Facturas", b =>
                 {
-                    b.HasOne("Facturador.Models.Clientes", "Clientes")
-                        .WithMany()
-                        .HasForeignKey("ClienteID")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("Facturador.Models.Ventas", "Ventas")
                         .WithMany()
                         .HasForeignKey("VentaId")

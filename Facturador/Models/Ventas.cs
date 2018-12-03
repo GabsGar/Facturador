@@ -44,5 +44,11 @@ namespace Facturador.Models
 
         [ForeignKey("MetodoPagoId")]
         public virtual MetodosPago MetodosPago { get; set; }
+
+        [Required]
+        public int FormaPagoId { get; set; }
+
+        [ForeignKey("FormaPagoId")]
+        public virtual FormasPago FormasPago { get; set; }
     }
 }

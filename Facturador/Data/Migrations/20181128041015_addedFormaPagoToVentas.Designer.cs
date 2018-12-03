@@ -4,14 +4,16 @@ using Facturador.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Facturador.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181128041015_addedFormaPagoToVentas")]
+    partial class addedFormaPagoToVentas
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -81,8 +83,6 @@ namespace Facturador.Data.Migrations
                     b.Property<string>("Certificado")
                         .IsRequired();
 
-                    b.Property<int>("ClienteID");
-
                     b.Property<DateTime>("FechaExpedicion");
 
                     b.Property<string>("NoCertificado")
@@ -97,8 +97,6 @@ namespace Facturador.Data.Migrations
                     b.Property<int>("VentaId");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ClienteID");
 
                     b.HasIndex("VentaId");
 
@@ -201,13 +199,9 @@ namespace Facturador.Data.Migrations
 
                     b.Property<double>("Total");
 
-                    b.Property<int>("VentaId");
-
                     b.HasKey("Id");
 
                     b.HasIndex("ProductoId");
-
-                    b.HasIndex("VentaId");
 
                     b.ToTable("Transacciones");
                 });
@@ -418,11 +412,6 @@ namespace Facturador.Data.Migrations
 
             modelBuilder.Entity("Facturador.Models.Facturas", b =>
                 {
-                    b.HasOne("Facturador.Models.Clientes", "Clientes")
-                        .WithMany()
-                        .HasForeignKey("ClienteID")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("Facturador.Models.Ventas", "Ventas")
                         .WithMany()
                         .HasForeignKey("VentaId")
@@ -447,11 +436,6 @@ namespace Facturador.Data.Migrations
                     b.HasOne("Facturador.Models.Productos", "Productos")
                         .WithMany()
                         .HasForeignKey("ProductoId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Facturador.Models.Ventas", "Ventas")
-                        .WithMany()
-                        .HasForeignKey("VentaId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
