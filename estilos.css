@@ -1,0 +1,15 @@
+.titulo{ 
+    width: 100%;
+    font-size: 200%;
+    text-align: center;
+}
+
+.button{ 
+    width: 30%;
+    font-size: 100%;
+    text-align: center;
+    background-color: dodgerblue;
+    border-radius: 20px;
+    position: relative;
+    left: 70%;
+}
